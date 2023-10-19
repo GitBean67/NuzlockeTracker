@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/buttonNewGame"
+        android:layout_width="318dp"
+        android:layout_height="95dp"
+        android:layout_marginStart="46dp"
+        android:layout_marginTop="496dp"
+        android:layout_marginEnd="47dp"
+        android:layout_marginBottom="140dp"
+        android:text="New Game"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonLoadGame"
+        android:layout_width="318dp"
+        android:layout_height="95dp"
+        android:layout_marginStart="46dp"
+        android:layout_marginTop="591dp"
+        android:layout_marginEnd="47dp"
+        android:layout_marginBottom="45dp"
+        android:text="Load Game"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageViewPokemon"
+        android:layout_width="386dp"
+        android:layout_height="206dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="521dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/international_pok_mon_logo_svg" />
+
+    <ImageView
+        android:id="@+id/imageViewNuzlocke"
+        android:layout_width="311dp"
+        android:layout_height="163dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="118dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="450dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/nuzlocke_10_19_2023" />
+
+    <ImageView
+        android:id="@+id/imageViewNuzleaf"
+        android:layout_width="375dp"
+        android:layout_height="509dp"
+        android:layout_marginTop="53dp"
+        android:layout_marginBottom="78dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.527"
+        app:srcCompat="@drawable/nuzleafsprite" />
+</androidx.constraintlayout.widget.ConstraintLayout>
