@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Spinner;
 
 import com.google.firebase.database.DataSnapshot;
@@ -35,7 +36,7 @@ public class TrackerActivity extends AppCompatActivity {
     FirebaseDatabase database;
     DatabaseReference myRef;
     PokemonViewModel pokemonViewModel;
-    RecyclerView recyclerPokemon, spinnerCustom;
+    ListView recyclerPokemon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,34 +104,71 @@ public class TrackerActivity extends AppCompatActivity {
         buttonNew.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("CIS 3334", "New Game button clicked");   // log button click for debugging using "CIS 3334" tag
+                Log.d("CIS 3334", "New button clicked");   // new button click for debugging using "CIS 3334" tag
 
                 String species = editTextSpecies.getText().toString();
                 String nickname = editTextNickname.getText().toString();
                 String location = editTextLocation.getText().toString();
                 String status = editTextStatus.getText().toString();
+
+                Pokemon pokemon = new Pokemon(species, nickname, location, status);
+
+                pokemonViewModel.addPokemon(pokemon.toString());
+
+                Log.d("CIS 3334", "Updating the firebase data");
+
+                // variables for the Firebase database
+                myRef.setValue(pokemon);
+
+
             }
         });
     }
 
     private void setupSaveButton() {
+
         buttonSave = findViewById(R.id.buttonSave);
+        buttonNew.setOnClickListener(new View.OnClickListener() {
+
+        public void onClick(View v) {
+            Log.d("CIS 3334", "Save button clicked");   // save button click for debugging using "CIS 3334" tag
+
+            String species = editTextSpecies.getText().toString();
+            String nickname = editTextNickname.getText().toString();
+            String location = editTextLocation.getText().toString();
+            String status = editTextStatus.getText().toString();
+
+            Pokemon pokemon = new Pokemon(species, nickname, location, status);
+
+            pokemonViewModel.updatePokemon(recyclerPokemon.getCheckedItemPosition(), pokemon.toString());
+
+            Log.d("CIS 3334", "Updating the firebase data");
+
+            // variables for the Firebase database
+            myRef.setValue(pokemon);
+            }
+        });
     }
 
     private void setupDeleteButton() {
+
         buttonDelete = findViewById(R.id.buttonDelete);
 
         buttonNew.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("CIS 3334", "New Game button clicked");   // log button click for debugging using "CIS 3334" tag
+                Log.d("CIS 3334", "Delete button clicked");   // delete button click for debugging using "CIS 3334" tag
 
+                //Delete selected pokemon
+                pokemonViewModel.clearPokemon(recyclerPokemon.getCheckedItemPosition());
+
+                myRef.removeValue();
             }
         });
     }
 
     private void setupPokemonSpinner() {
-        recyclerPokemon = findViewById(R.id.recylerViewPokemon);
+        recyclerPokemon = findViewById(R.id.listViewPokemon);
         // Read the pokemon names from the strings.xml file
         //String pokemonNicknames[] = getResources().getStringArray(R.array.pokemonList);
         // Create an ArrayAdapter using the string array and a default spinner layout
@@ -140,16 +178,12 @@ public class TrackerActivity extends AppCompatActivity {
         // Apply the adapter to the spinner
         recyclerPokemon.setAdapter(itemsAdapter);
         //-------------------------------------
-//        recyclerPokemon.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//
-//            }
-//
-//            @Override
-//            public void onNothingSelected(AdapterView<?> parent) {
-//                //Another interface callback
-//            }
-//        });
+        recyclerPokemon.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long i)
+            {
+                Log.d("CIS 3334", "setOnItemClickListener -- You clicked on pokemon in position " + position);   // log button click for debugging using "CIS 3334" tag
+            }
+        });
     }
-}
+    }

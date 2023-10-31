@@ -8,19 +8,6 @@
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="82dp">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recylerViewPokemon"
-        android:layout_width="379dp"
-        android:layout_height="243dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="150dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="338dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/textViewSpecies"
         android:layout_width="wrap_content"
@@ -202,5 +189,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/tracker_10_19_2023" />
+
+    <ListView
+        android:id="@+id/listViewPokemon"
+        android:layout_width="409dp"
+        android:layout_height="250dp"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="149dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

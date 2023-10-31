@@ -17,8 +17,8 @@ public class PokemonViewModel extends AndroidViewModel {
         pokemonList = new ArrayList<>();
     }
 
-    public void clearPokemon(Integer itemNum) {
-        pokemonList.remove(itemNum);
+    public void clearPokemon(Integer position) {
+        pokemonList.remove(position);
     }
 
     public void clearAllPokemon() {pokemonList.clear();}
@@ -29,6 +29,8 @@ public class PokemonViewModel extends AndroidViewModel {
     public String getPokemon(Integer position) {
         return pokemonList.get(position);
     }
+
+    public String updatePokemon (Integer position, String pokemon) {return pokemonList.set(position, pokemon);}
 
     public List<String> getAllPokemon() {return pokemonList;}
 }
